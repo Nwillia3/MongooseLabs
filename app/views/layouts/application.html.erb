@@ -1,92 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blog</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= favicon_link_tag 'favicon.ico' %>
-  <%= csrf_meta_tags %>
+	<title>Blog</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= favicon_link_tag 'favicon.ico' %>
+	<%= csrf_meta_tags %>
+
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Simple Sidebar - Start Bootstrap Template</title>
+
+	
+
 </head>
 <body>
-	<div id="sidebar">
-		<div id="logo">
-			<%= link_to root_path do %>
-				<%= image_tag "logo.svg" %>
-			<% end %>
-		</div>
 
-		<!--
-		<div class="dropdown">
-			<button onclick="myFunction()" class="dropbtn">Dropdown</button>
-			<div id="myDropdown" class="dropdown-content">
-				<li class="category">Website</li>
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">Start Bootstrap</a>
+                </li>
 				<li><%= link_to "Blog", root_path %></li>
-				<li><%= link_to "About", about_path %></li>  <!--how to link to pages >
+				<li><%= link_to "About", about_path %></li>  <!--how to link to pages -->
 				<li><%= link_to "Summer programs", summerprograms_path %></li>
 				<li><%= link_to "Educational Tools", about_path %></li>
 				<li><%= link_to "College Research Tools", about_path %></li>
 				<li><%= link_to "College Bound Programs", about_path %></li>
 				<li><%= link_to "College Planning Tools", about_path %></li>
 				<li><%= link_to "About", about_path %></li>
-			</div>
-		</div> -->
+	        </ul>
+	        <div>
+	        	<% if !user_signed_in? %>
+					<p class="sign_in"><%= link_to "Admin Login", new_user_session_path %></p>
+				<% end %>
+	        </div>
+	            
+        </div>
+        <!-- /#sidebar-wrapper -->
 
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-lg-offset-9">
+                        <a href="#menu-toggle" class="button" id="menu-toggle">Toggle Menu</a>
+                    </div>
 
+                    <div id="header">
+						<% if current_page?(root_path) %>
+							<p>All Posts</p>
+						<% elsif current_page?(about_path) %>
+							<p>About</p>
+						<% else %>
+							<%= link_to "Back to All Posts", root_path %>
+						<% end %>
 
+						<% if user_signed_in? %>
+							<div class="buttons">
+								<button class="button"><%= link_to "New Post", new_post_path %></button>
+								<button class="button"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></button>
+							</div>
+							
+						<% end %>
+					</div>
 
+					<% flash.each do |name, msg| %>
+						<%= content_tag(:div, msg, class: "alert") %>
+					<% end %>
 
+					<%= yield %>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
 
+    </div>
+    <!-- /#wrapper -->
 
-		<ul>
-			<li class="category">Website</li>
-			<li><%= link_to "Blog", root_path %></li>
-			<li><%= link_to "About", about_path %></li>  <!--how to link to pages -->
-			<li><%= link_to "Summer programs", summerprograms_path %></li>
-			<li><%= link_to "Educational Tools", about_path %></li>
-			<li><%= link_to "College Research Tools", about_path %></li>
-			<li><%= link_to "College Bound Programs", about_path %></li>
-			<li><%= link_to "College Planning Tools", about_path %></li>
-			<li><%= link_to "About", about_path %></li>
-		</ul>
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
 
-		<ul>
-			<li class="category">Social</li>
-			<li><a href="https://twitter.com/mackenziechild">Twitter</a></li>
-			<li><a href="http://instagram.com/mackenziechild">Instagram</a></li>
-			<li><a href="https://github.com/mackenziechild">Github</a></li>
-			<li><a href="mailto:hey@mackenziechild.me">Email</a></li>
-		</ul>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 
-		<% if !user_signed_in? %>
-			<p class="sign_in"><%= link_to "Admin Login", new_user_session_path %></p>
-		<% end %>
-	</div>
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 
-	<div id="main_content">
-		<div id="header">
-			<% if current_page?(root_path) %>
-				<p>All Posts</p>
-			<% elsif current_page?(about_path) %>
-				<p>About</p>
-			<% else %>
-				<%= link_to "Back to All Posts", root_path %>
-			<% end %>
-
-			<% if user_signed_in? %>
-				<div class="buttons">
-					<button class="button"><%= link_to "New Post", new_post_path %></button>
-					<button class="button"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></button>
-				</div>
-				
-			<% end %>
-		</div>
-
-		<% flash.each do |name, msg| %>
-			<%= content_tag(:div, msg, class: "alert") %>
-		<% end %>
-
-		<%= yield %>
-	</div>
 </body>
+
 </html>
