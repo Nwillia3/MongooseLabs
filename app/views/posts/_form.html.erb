@@ -1,5 +1,5 @@
 <%= form_for @post do |f| %>
-	<% if @post.error.any.? %>
+	<% if @post.errors.any? %>
 		<div class="errors">
 			<h2><%= pluralize(@post.errors.count, "error")%> prevented this post from saving</h2>
 			<ul>

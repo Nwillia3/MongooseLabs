@@ -16,9 +16,37 @@
 			<% end %>
 		</div>
 
+		<!--
+		<div class="dropdown">
+			<button onclick="myFunction()" class="dropbtn">Dropdown</button>
+			<div id="myDropdown" class="dropdown-content">
+				<li class="category">Website</li>
+				<li><%= link_to "Blog", root_path %></li>
+				<li><%= link_to "About", about_path %></li>  <!--how to link to pages >
+				<li><%= link_to "Summer programs", summerprograms_path %></li>
+				<li><%= link_to "Educational Tools", about_path %></li>
+				<li><%= link_to "College Research Tools", about_path %></li>
+				<li><%= link_to "College Bound Programs", about_path %></li>
+				<li><%= link_to "College Planning Tools", about_path %></li>
+				<li><%= link_to "About", about_path %></li>
+			</div>
+		</div> -->
+
+
+
+
+
+
+
 		<ul>
 			<li class="category">Website</li>
 			<li><%= link_to "Blog", root_path %></li>
+			<li><%= link_to "About", about_path %></li>  <!--how to link to pages -->
+			<li><%= link_to "Summer programs", summerprograms_path %></li>
+			<li><%= link_to "Educational Tools", about_path %></li>
+			<li><%= link_to "College Research Tools", about_path %></li>
+			<li><%= link_to "College Bound Programs", about_path %></li>
+			<li><%= link_to "College Planning Tools", about_path %></li>
 			<li><%= link_to "About", about_path %></li>
 		</ul>
 
@@ -48,8 +76,9 @@
 			<% if user_signed_in? %>
 				<div class="buttons">
 					<button class="button"><%= link_to "New Post", new_post_path %></button>
-					<button class="button">Log Out</button>
+					<button class="button"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></button>
 				</div>
+				
 			<% end %>
 		</div>
 
