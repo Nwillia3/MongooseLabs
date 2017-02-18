@@ -23,6 +23,21 @@
 	padding-top: 2.5em;
 }
 
+.site{
+	width: 940px;
+    margin: 0 auto;
+}
+
+
+#content-wrapper{
+	padding-top:30px;
+}
+
+a, a:hover{
+	
+	background-color: transparent;
+	color: black;
+}
 
 .sign_in {
 	position: absolute;
@@ -32,6 +47,9 @@
 	color: #9eafba;
 }
 
+blockquote{
+	border:5px solid #eee;
+}
 
 html, body {
 	font-family: 'Raleway', sans-serif;

@@ -1,8 +1,9 @@
-<div class="container">
-	<div class="row">
+<div id="content-wrapper">
+
+	<div class="site">
 		<div class="col-lg-10 ">
 			
-			<h1 class="title"><%= @post.title %></h1>
+			<h1 class="title "><%= @post.title %></h1>
 
 			<p class="date">
 				Posted <%= time_ago_in_words(@post.created_at) %> Ago
@@ -12,14 +13,14 @@
 				<% end %>	
 			</p>
 
-			<p class="lead"><%= @post.body %></p>
+			<p class="showpost-content"><%= @post.body %></p>
 			<hr>
 
 			<div id="comments">
-				<h3><%= @post.comments.count %> Comments</h3>
+				<h3 class="lead"><%= @post.comments.count %> Comments</h3>
 				<%= render @post.comments %>
 
-				<h4>Leave a comment:</h4>
+				<h4 class="lead">Leave a comment:</h4>
 				<%= render "comments/form" %>
 			</div>
 		
