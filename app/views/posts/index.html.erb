@@ -1,8 +1,24 @@
-<% @posts.each do |post| %>
-	<div class="post_wrapper">
-		<h2 class="title"> <%= link_to post.title, post %>
-		</h2>
-		<p class="date"> <%= post.created_at.strftime("%B, %d, %Y") %></p>
-	</div>
+<div class="container">
+	<% @posts.each do |post| %>
 
-<% end %>
+
+		<div class="card card-outline-primary col-md-6">
+			<div class="card-block ">
+				<blockquote class="card-blockquote">
+					<h2 class="title"> <%= link_to post.title, post %></h2>
+
+					<p class="date"> <%= post.created_at.strftime("%B, %d, %Y") %></p>
+				</blockquote>
+			</div>
+		</div>
+			
+		
+
+
+	<% end %>
+
+
+</div>
+
+
+

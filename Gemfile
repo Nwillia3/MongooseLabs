@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.4.1'
 gem 'devise', '~> 4.2'
 
+gem 'mail_form', '~> 1.6'
+gem 'simple_form', '~> 3.4'
 
 
 group :development, :test do

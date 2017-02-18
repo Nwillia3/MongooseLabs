@@ -33,11 +33,18 @@
 				<li><%= link_to "Blog", root_path %></li>
 				<li><%= link_to "About", about_path %></li>  <!--how to link to pages -->
 				<li><%= link_to "Summer programs", summerprograms_path %></li>
-				<li><%= link_to "Educational Tools", about_path %></li>
-				<li><%= link_to "College Research Tools", about_path %></li>
-				<li><%= link_to "College Bound Programs", about_path %></li>
-				<li><%= link_to "College Planning Tools", about_path %></li>
-				<li><%= link_to "About", about_path %></li>
+				<li><%= link_to "Educational Tools", edtools_path %></li>
+				<li><%= link_to "College Research Tools", collegeresearchtools_path %></li>
+				<li><%= link_to "College Bound Programs", collegebound_path %></li>
+				<li><%= link_to "College Planning Tools", planningtools_path %></li>
+
+				<% if user_signed_in? %>
+					<div class="buttons">
+						<button class="button"><%= link_to "New Post", new_post_path %></button>
+						<button class="button"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></button>
+					</div>
+					
+				<% end %>
 	        </ul>
 	        <div>
 	        	<% if !user_signed_in? %>
@@ -52,26 +59,20 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-3 col-lg-offset-9">
-                        <a href="#menu-toggle" class="button" id="menu-toggle">Toggle Menu</a>
+                    <div class="col-xs-4">
+                        <a href="#menu-toggle" class="button" id="menu-toggle">Menu</a>
                     </div>
 
-                    <div id="header">
+                    <div class="col-xs-4">
 						<% if current_page?(root_path) %>
 							<p>All Posts</p>
-						<% elsif current_page?(about_path) %>
-							<p>About</p>
+						<% elsif current_page?(about_path) %> <br>
+							
 						<% else %>
 							<%= link_to "Back to All Posts", root_path %>
 						<% end %>
 
-						<% if user_signed_in? %>
-							<div class="buttons">
-								<button class="button"><%= link_to "New Post", new_post_path %></button>
-								<button class="button"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></button>
-							</div>
-							
-						<% end %>
+						
 					</div>
 
 					<% flash.each do |name, msg| %>
@@ -83,6 +84,17 @@
             </div>
         </div>
         <!-- /#page-content-wrapper -->
+
+
+
+        <!-- Footer -->
+        <div class="container">
+	      
+	      <%= render 'layouts/footer' %>
+	    </div>
+
+
+        <!-- #footer-->
 
     </div>
     <!-- /#wrapper -->
