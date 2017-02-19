@@ -15,9 +15,12 @@ Rails.application.routes.draw do
 	get '/edtools', to: 'pages#edtools'
 	get '/collegeresearchtools', to: 'pages#collegeresearchtools'
 	get '/planningtools', to: 'pages#planningtools'
+	
 
 	match '/contacts',     to: 'contacts#new',             via: 'get'
 	resources "contacts", only: [:new, :create]
 
 	
 end
+
+
