@@ -9,7 +9,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3', '>= 1.3.13'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -33,6 +33,7 @@ gem 'devise', '~> 4.2'
 
 gem 'mail_form', '~> 1.6'
 gem 'simple_form', '~> 3.4'
+
 
 
 group :development, :test do
